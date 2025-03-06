@@ -35,18 +35,20 @@ class CallsListPage extends StatelessWidget {
                     );
                     launchUrl(uri);
                   },
-                  icon: Icon(Icons.call),
+                  icon: Icon(Icons.call,color: Colors.grey.shade800,),
                 ),
                 title: Text(
                   providerTrue.contentList[index].name.toString(),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
+                    color: Colors.grey.shade800,
                     letterSpacing: .5,
                   ),
                 ),
                 subtitle: Text(
                   providerTrue.contentList[index].number.toString(),
                   style: TextStyle(
+                    color: Colors.grey,
                     fontWeight: FontWeight.bold,
                     letterSpacing: .5,
                   ),

@@ -35,18 +35,20 @@ class ChatsListPage extends StatelessWidget {
                     );
                     launchUrl(uri);
                   },
-                  icon: Icon(Icons.email_outlined),
+                  icon: Icon(Icons.alternate_email),color: Colors.grey.shade800,
                 ),
                 title: Text(
                   providerTrue.contentList[index].name.toString(),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
+                    color: Colors.grey.shade800,
                     letterSpacing: .5,
                   ),
                 ),
                 subtitle: Text(
                   providerTrue.contentList[index].email.toString(),
                   style: TextStyle(
+                    color: Colors.grey,
                     fontWeight: FontWeight.bold,
                     letterSpacing: .5,
                   ),

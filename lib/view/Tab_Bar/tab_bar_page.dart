@@ -20,7 +20,11 @@ class BottomNavigationBarPage extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           bottom: TabBar(
-            indicatorColor: Colors.white,
+            indicatorColor: Colors.blueGrey,
+            indicator: UnderlineTabIndicator(
+              borderSide: BorderSide(width:2,color: Colors.blue),
+              insets: EdgeInsets.symmetric(horizontal: 40.0),
+            ),
             unselectedLabelColor: Colors.white60,
             tabs: [
               Tab(icon: Icon(Icons.person_add_alt,color: Colors.black,)),

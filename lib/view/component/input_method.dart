@@ -9,12 +9,16 @@ Card inputBoxMethod({
   return Card(
     color: Colors.blue.shade50,
     child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.all(8.0),
       child: TextField(
         keyboardType: (isNumber) ? TextInputType.number : TextInputType.text,
         controller: controller,
         maxLines: (isMaxLines) ? 2 : 1,
-        decoration: InputDecoration(border: InputBorder.none, hintText: text),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: text,
+          hintStyle: TextStyle(color: Colors.grey,fontSize: 18),
+        ),
       ),
     ),
   );

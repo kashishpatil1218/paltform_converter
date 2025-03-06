@@ -21,11 +21,7 @@ class ContentPage extends StatelessWidget {
               if (providerTrue.settingList[index] == "Edit Profile") {
                 providerFalse.readUserData();
 
-                // providerTrue.txtBio.text =
-                //     providerTrue.userList[0].bio.toString();
-                //
-                // providerTrue.txtName.text =
-                //     providerTrue.userList[0].name.toString();
+
 
                 Navigator.of(context).pushNamed('/editProfilePage');
               }
@@ -50,11 +46,12 @@ class ContentPage extends StatelessWidget {
                       ).pushNamed('/editProfilePage');
                     }
                   },
-                  icon: Icon(Icons.arrow_forward_ios_rounded),
+                  icon: Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,),
                 ),
                 title: Text(
                   providerTrue.settingList[index],
                   style: TextStyle(
+                    color: Colors.grey.shade800,
                     fontWeight: FontWeight.w500,
                     letterSpacing: .5,
                   ),
