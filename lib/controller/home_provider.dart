@@ -11,7 +11,7 @@ class ProviderController extends ChangeNotifier {
   var txtBio = TextEditingController();
 
   DateTime? selectedDate; // for DATE
-  TimeOfDay? selectedTime;// FOR TIME
+  TimeOfDay? selectedTime;// FO
 
   void convertApp({required bool value}) {
     isIos = value;
@@ -92,8 +92,9 @@ class ProviderController extends ChangeNotifier {
     readDataBase();
     notifyListeners();
   }
-  void deleteDataBAse({required int id}){
-    DbHelper.dbHelper.delete(id: id);
+  Future<void> deleteDataBAse( int id) async {
+   await DbHelper.dbHelper.delete(id: id);
+    readDataBase();
   }
 }
 

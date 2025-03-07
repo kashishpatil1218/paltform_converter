@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:paltform_conveter/view/Tab_Bar/setting/contact_page.dart';
 import 'package:paltform_conveter/view/Tab_Bar/setting/edite_profilr.dart';
 import 'package:paltform_conveter/view/Tab_Bar/tab_bar_page.dart';
-import 'package:paltform_conveter/view/common_page.dart';
+import 'package:paltform_conveter/view/cupertino_page.dart';
 import 'package:paltform_conveter/view/user_add_page/add_user.dart';
 
 import 'package:provider/provider.dart';
@@ -39,7 +39,7 @@ class _MyAppState extends State<ContactApp> {
         Provider.of<ProviderController>(context, listen: false).readDataBase();
 
         return (Provider.of<ProviderController>(context, listen: true).isIos)
-            ? CupertinoApp(home: Temp())
+            ? CupertinoApp(home: CupertinoFormPage())
             : MaterialApp(
           routes: {
             '/':

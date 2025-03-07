@@ -20,9 +20,6 @@ class ContentPage extends StatelessWidget {
             onTap: () {
               if (providerTrue.settingList[index] == "Edit Profile") {
                 providerFalse.readUserData();
-
-
-
                 Navigator.of(context).pushNamed('/editProfilePage');
               }
             },
