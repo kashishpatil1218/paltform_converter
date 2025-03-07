@@ -3,7 +3,7 @@ import 'package:paltform_conveter/helper/Db_helper.dart';
 import 'package:paltform_conveter/view/component/input_method.dart';
 import 'package:provider/provider.dart';
 
-import '../../controller/home_provider.dart';
+import '../../../controller/home_provider.dart';
 
 class AddUserPage extends StatelessWidget {
   const AddUserPage({super.key});

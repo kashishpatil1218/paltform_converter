@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../controller/home_provider.dart';
-import '../../../helper/Db_helper.dart';
-import '../../component/input_method.dart';
+import '../../../../helper/Db_helper.dart';
+import '../../../component/input_method.dart';
+
 
 class EditProfilePage extends StatelessWidget {
   const EditProfilePage({super.key});

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:paltform_conveter/view/Tab_Bar/add_contact.dart';
-import 'package:paltform_conveter/view/Tab_Bar/call_page.dart';
-import 'package:paltform_conveter/view/Tab_Bar/email_page.dart';
-import 'package:paltform_conveter/view/Tab_Bar/setting/contact_page.dart';
+import 'package:paltform_conveter/view/Android/Tab_Bar/setting/contact_page.dart';
+
+import 'add_contact.dart';
+import 'call_page.dart';
+import 'email_page.dart';
+
 
 class BottomNavigationBarPage extends StatelessWidget {
   const BottomNavigationBarPage({super.key});

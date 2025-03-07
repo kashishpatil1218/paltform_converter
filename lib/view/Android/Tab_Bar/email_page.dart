@@ -117,7 +117,7 @@ class ChatsListPage extends StatelessWidget {
                   ),
                 ),
                 trailing: IconButton(
-                  icon: Icon(Icons.delete, color: Colors.red),
+                  icon: Icon(Icons.delete, color: Colors.grey),
                   onPressed: () {
                     _showDeleteConfirmation(context, providerFalse, item.id!);
                   },
