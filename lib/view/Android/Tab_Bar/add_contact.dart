@@ -1,23 +1,25 @@
 
 
-import 'dart:developer';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/home_provider.dart';
 import '../../../helper/Db_helper.dart';
 import '../../component/input_method.dart';
 
-
-class AddContentPage extends StatefulWidget {
-  const AddContentPage({super.key});
+class AddContent extends StatefulWidget {
+  const AddContent({super.key});
 
   @override
-  State<AddContentPage> createState() => _AddContentPageState();
+  State<AddContent> createState() => _AddContentPageState();
 }
 
-class _AddContentPageState extends State<AddContentPage> {
+class _AddContentPageState extends State<AddContent> {
   DateTime? selectedDate;
   TimeOfDay? selectedTime;
+  File? _image;
+  final ImagePicker _picker = ImagePicker();
 
   @override
   void initState() {
@@ -55,6 +57,15 @@ class _AddContentPageState extends State<AddContentPage> {
     }
   }
 
+  Future<void> _pickImage() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.camera);
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var providerTrue = Provider.of<ProviderController>(context, listen: true);
@@ -69,11 +80,15 @@ class _AddContentPageState extends State<AddContentPage> {
               child: Column(
                 children: <Widget>[
                   const SizedBox(height: 10),
-                  Center(
+                  GestureDetector(
+                    onTap: _pickImage,
                     child: CircleAvatar(
                       backgroundColor: Colors.blue.shade100,
                       radius: 70,
-                      child: const Icon(Icons.add_a_photo_outlined, size: 35),
+                      backgroundImage: _image != null ? FileImage(_image!) : null,
+                      child: _image == null
+                          ? const Icon(Icons.add_a_photo_outlined, size: 35)
+                          : null,
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -101,24 +116,20 @@ class _AddContentPageState extends State<AddContentPage> {
                     isMaxLines: true,
                     isNumber: false,
                   ),
-
-                  // Date Picker
                   ListTile(
                     title: Text(
                       selectedDate == null
                           ? "Select Date"
-                          : "Date: ${selectedDate!.day}-${selectedDate!.month}-${selectedDate!.year}",
+                          : "Date: \${selectedDate!.day}-\${selectedDate!.month}-\${selectedDate!.year}",
                     ),
                     leading: const Icon(Icons.calendar_today),
                     onTap: () => _selectDate(context),
                   ),
-
-                  // Time Picker
                   ListTile(
                     title: Text(
                       selectedTime == null
                           ? "Select Time"
-                          : "Time: ${selectedTime!.format(context)}",
+                          : "Time: \${selectedTime!.format(context)}",
                     ),
                     leading: const Icon(Icons.access_time),
                     onTap: () => _selectTime(context),
@@ -127,8 +138,6 @@ class _AddContentPageState extends State<AddContentPage> {
               ),
             ),
           ),
-
-          // Add Button
           GestureDetector(
             onTap: () {
               providerFalse.addDatabase(
@@ -147,6 +156,7 @@ class _AddContentPageState extends State<AddContentPage> {
               setState(() {
                 selectedDate = null;
                 selectedTime = null;
+                _image = null;
               });
             },
             child: Container(
@@ -163,7 +173,6 @@ class _AddContentPageState extends State<AddContentPage> {
                   color: Colors.white,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-
                 ),
               ),
             ),

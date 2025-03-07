@@ -6,8 +6,8 @@ import 'call_page.dart';
 import 'email_page.dart';
 
 
-class BottomNavigationBarPage extends StatelessWidget {
-  const BottomNavigationBarPage({super.key});
+class BottomNavigationPage extends StatelessWidget {
+  const BottomNavigationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +53,9 @@ class BottomNavigationBarPage extends StatelessWidget {
         ),
         body: TabBarView(children: [
 
-          AddContentPage(),
+          AddContent(),
           ChatsListPage(),
-          CallsListPage(),
+          CallsList(),
           ContentPage(),
         ]),
       ),

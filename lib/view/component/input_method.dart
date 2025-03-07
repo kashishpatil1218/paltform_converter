@@ -9,7 +9,7 @@ Card inputBoxMethod({
   return Card(
     color: Colors.blue.shade50,
     child: Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10,),
       child: TextField(
         keyboardType: (isNumber) ? TextInputType.number : TextInputType.text,
         controller: controller,

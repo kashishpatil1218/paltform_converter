@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:paltform_conveter/helper/Db_helper.dart';
 
@@ -10,7 +11,10 @@ class ProviderController extends ChangeNotifier {
   var txtEmail = TextEditingController();
   var txtBio = TextEditingController();
 
-  DateTime? selectedDate; // for DATE
+  DateTime? selectedDate; // for DA
+  DateTime? selectedCupertinoTime; // for DA
+  String? contactDate;// TE
+  String? contactTime;// TE
   TimeOfDay? selectedTime;// FO
 
   void convertApp({required bool value}) {
@@ -92,9 +96,58 @@ class ProviderController extends ChangeNotifier {
     readDataBase();
     notifyListeners();
   }
-  Future<void> deleteDataBAse( int id) async {
+  Future<void> deleteDataBAse(int id) async {
    await DbHelper.dbHelper.delete(id: id);
     readDataBase();
+  }
+
+
+  Future<void> datePickerCupertino(BuildContext context) async {
+    await showCupertinoModalPopup(
+      context: context,
+      builder: (context) => Container(
+        height: 216,
+        padding: const EdgeInsets.only(top: 6.0),
+        margin:
+        EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        color: CupertinoColors.systemBackground.resolveFrom(context),
+        child: CupertinoDatePicker(
+          initialDateTime: DateTime.now(),
+          mode: CupertinoDatePickerMode.date,
+          use24hFormat: true,
+          showDayOfWeek: true,
+          onDateTimeChanged: (value) {
+            selectedDate = value;
+          },
+        ),
+      ),
+    );
+    contactDate = "${selectedDate!.month} / ${selectedDate!.day} / ${selectedDate!.year}";
+
+    notifyListeners();
+  }
+
+
+  Future<void> timePickerCupertino(BuildContext context) async {
+    await showCupertinoModalPopup(
+      context: context,
+      builder: (context) => Container(
+        height: 216,
+        padding: const EdgeInsets.only(top: 6.0),
+        margin:
+        EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        color: CupertinoColors.systemBackground.resolveFrom(context),
+        child: CupertinoDatePicker(
+          initialDateTime: DateTime.now(),
+          mode: CupertinoDatePickerMode.time,
+          onDateTimeChanged: (value) {
+            selectedCupertinoTime = value;
+          },
+        ),
+      ),
+    );
+    contactTime = '${selectedCupertinoTime!.hour}:${selectedCupertinoTime!.minute}';
+
   }
 }
 

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:paltform_conveter/view/Android/Tab_Bar/setting/contact_page.dart';
 import 'package:paltform_conveter/view/Android/Tab_Bar/setting/edite_profilr.dart';
 import 'package:paltform_conveter/view/Android/Tab_Bar/tab_bar_page.dart';
-import 'package:paltform_conveter/view/Android/user_add_page/add_user.dart';
 
 import 'package:paltform_conveter/view/Ios/cupertino_page.dart';
+import 'package:paltform_conveter/view/user_add_page/add_user.dart';
 
 import 'package:provider/provider.dart';
 
@@ -50,9 +50,9 @@ class _MyAppState extends State<ContactApp> {
               listen: true,
             ).userList.isEmpty)
                 ? AddUserPage()
-                : BottomNavigationBarPage(),
+                : BottomNavigationPage(),
             '/bottomNavigationBarPage':
-                (context) => BottomNavigationBarPage(),
+                (context) => BottomNavigationPage(),
             '/content': (context) => ContentPage(),
             '/editProfilePage': (context) => EditProfilePage(),
           },
